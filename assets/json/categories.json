@@ -1,0 +1,82 @@
+{
+    "categories": 
+    [
+        {
+            "category_id": 0,
+            "category_name": "Tecnologia",
+            "category_description": "Los mejores productos tecnologicos al alcance de tu mano",
+            "category_images": [
+                "https://www.aeromall.com.sv/static/media/technoBarnner.3ca3f073.jpg"
+            ]
+        },
+        {
+            "category_id": 1,
+            "category_name": "Moda",
+            "category_description": "Los mejores estilos",
+            "category_images": [
+                "https://www.aeromall.com.sv/static/media/cateModa.7d6d5cc8.jpg"
+            ]
+        },
+        {
+            "category_id": 2,
+            "category_name": "Belleza",
+            "category_description": "Areglate bien",
+            "category_images": [
+                "https://www.aeromall.com.sv/static/media/cateModaH.bf7b27f2.jpg"
+            ]
+        }
+    ],
+    "subcategories":[
+        {
+            "subcategory_id": 0,
+            "category_name": "Tecnologia",
+            "subcategory_name": "Smartphones y Celulares",
+            "subcategory_description": "El smartphone perfecto para ti",
+            "subcategory_images": [
+                "https://www.pcworld.es/cmsdata/slideshow/3678899/mejores_smartphone.jpg"
+            ]
+        
+        },
+        {
+            "subcategory_id": 1,
+            "category_name": "Moda",
+            "subcategory_name": "Ropa - Caballero",
+            "subcategory_description": "Articulos para caballero",
+            "subcategory_images": [
+                "https://www.techgames.com.mx/wp-content/uploads/2020/08/LG-EISA-2020.jpg"
+            ]
+        
+        },
+        {
+            "subcategory_id": 1,
+            "category_name": "Moda",
+            "subcategory_name": "Calzado - Caballero",
+            "subcategory_description": "Articulos para caballero",
+            "subcategory_images": [
+                "https://www.techgames.com.mx/wp-content/uploads/2020/08/LG-EISA-2020.jpg"
+            ]
+        
+        },
+        {
+            "subcategory_id": 2,
+            "category_name": "Belleza",
+            "subcategory_name": "Maquillaje",
+            "subcategory_description": "Luce bien",
+            "subcategory_images": [
+                "https://www.pcworld.es/cmsdata/slideshow/3678899/mejores_smartphone.jpg"
+            ]
+        
+        },
+        {
+            "subcategory_id": 3,
+            "category_name": "Tecnologia",
+            "subcategory_name": "Audio y Video",
+            "subcategory_description": "El mejor sonido, la mejor imagen",
+            "subcategory_images": [
+                "https://www.techgames.com.mx/wp-content/uploads/2020/08/LG-EISA-2020.jpg"
+            ]
+        
+        }
+        
+    ]
+}
