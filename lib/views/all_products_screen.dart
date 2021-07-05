@@ -39,7 +39,7 @@ class _AllCategoriesProductsState extends State<AllCategoriesProducts> {
                   style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
-                      color: Resources().fontColor),
+                      color: Resources().secondaryColor),
                   textAlign: TextAlign.left,
                 ),
                 alignment: Alignment.centerLeft,
@@ -54,7 +54,7 @@ class _AllCategoriesProductsState extends State<AllCategoriesProducts> {
                     style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
-                        color: Resources().fontColor),
+                        color: Resources().secondaryColor),
                     textAlign: TextAlign.left),
                 alignment: Alignment.centerLeft,
               ),
@@ -68,7 +68,7 @@ class _AllCategoriesProductsState extends State<AllCategoriesProducts> {
                     style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
-                        color: Resources().fontColor),
+                        color: Resources().secondaryColor),
                     textAlign: TextAlign.left),
                 alignment: Alignment.centerLeft,
               ),

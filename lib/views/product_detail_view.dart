@@ -12,9 +12,8 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
-  TextEditingController _amountController = new TextEditingController();
   int _amount = 1;
-  @override
+
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -27,13 +26,14 @@ class _ProductDetailState extends State<ProductDetail> {
                   [_productInfomation(widget.product, size)]))
         ],
       ),
-      floatingActionButton: _addToCartButton(size, context, widget.product),
+      floatingActionButton: _floatingBtns(size, context, widget.product),
     );
   }
 
   _buildHead(dynamic product, Size size) {
     final images = product["product_images"];
     return SliverAppBar(
+      actions: [_showCartBtn(size, context)],
       title: Text(
         product["product_name"],
         style: GoogleFonts.montserrat(
@@ -95,7 +95,7 @@ class _ProductDetailState extends State<ProductDetail> {
         children: [
           _productName(product['product_name'], size),
           _selectAmount(size, product['product_price']),
-          _productDescription(product['product_description'], size)
+          _productDescription(product['product_description'], size),
         ],
       ),
     );
@@ -105,8 +105,8 @@ class _ProductDetailState extends State<ProductDetail> {
     return Container(
         padding: EdgeInsets.only(
             right: size.width * 0.02, bottom: size.height * 0.05),
-        height: size.height * 0.3,
-        width: size.width * 0.6,
+        height: size.height * 0.35,
+        width: size.width * 0.8,
         alignment: Alignment.bottomRight,
         child: Roulette(
           child: FadeInImage(
@@ -177,7 +177,11 @@ class _ProductDetailState extends State<ProductDetail> {
         children: [
           Container(
             padding: EdgeInsets.all(15),
-            child: Text("Acerca del producto", style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 20, color: Resources().fontColor)),
+            child: Text("Acerca del producto",
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Resources().fontColor)),
             alignment: Alignment.centerLeft,
           ),
           Container(
@@ -188,7 +192,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     color: Resources().fontColor,
                     fontSize: 18,
                     height: 2)),
-          )
+          ),
         ],
       ),
     );
@@ -211,13 +215,13 @@ class _ProductDetailState extends State<ProductDetail> {
         ));
   }
 
-  _selectAmount(Size size, double productPrince) {
+  _selectAmount(Size size, double productPrice) {
     final btnStyle = ButtonStyle(
-      padding: MaterialStateProperty.all(EdgeInsets.zero),
-      shadowColor: MaterialStateProperty.all(Colors.transparent),
-      backgroundColor: MaterialStateProperty.all(Resources().primaryColor),
-      shape: MaterialStateProperty.all<CircleBorder>(CircleBorder())
-    );
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+        shadowColor: MaterialStateProperty.all(Colors.transparent),
+        backgroundColor: MaterialStateProperty.all(Resources().primaryColor),
+        shape: MaterialStateProperty.all<CircleBorder>(CircleBorder()));
+
     return Container(
       padding: EdgeInsets.all(15),
       child: Row(
@@ -237,8 +241,8 @@ class _ProductDetailState extends State<ProductDetail> {
                 ],
                 borderRadius: BorderRadius.circular(25)),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,  
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,          
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   style: btnStyle,
@@ -247,35 +251,99 @@ class _ProductDetailState extends State<ProductDetail> {
                     color: Resources().fontColor,
                   ),
                   onPressed: _diminishAmount,
-                ), 
+                ),
                 Container(
                   child: Text('${this._amount}',
                       style: GoogleFonts.montserrat(
-                          fontSize: 20, fontWeight: FontWeight.bold, color: Resources().fontColor)),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Resources().fontColor)),
                   decoration: BoxDecoration(),
                 ),
-                 ElevatedButton(
+                ElevatedButton(
                   style: btnStyle,
                   child: Icon(Icons.add, color: Resources().fontColor),
                   onPressed: _increaseAmount,
                 ),
-                
               ],
             ),
           ),
           Container(
             alignment: Alignment.centerRight,
-            child: Text("Hola"),
+            child: Text(
+              '\$ ${this._amount * productPrice}',
+              style: GoogleFonts.montserrat(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Resources().fontColor),
+            ),
           )
         ],
       ),
     );
   }
-  _floatingBtns(Size size, BuildContext context){
 
+  _floatingBtns(Size size, BuildContext context, product) {
+    return Container(
+      alignment: Alignment.bottomCenter,
+      height: 60,
+      //padding: EdgeInsets.all(5),
+      width: size.width,
+      margin: EdgeInsets.only(left: size.width * 0.084, right: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          //_showCartBtn(size, context),
+          _addToCartBtn(size, context, product)
+        ],
+      ),
+    );
   }
-  _addToCartButton(Size size, BuildContext context, product) {
-    return Container();
+
+  _showCartBtn(Size size, BuildContext context) {
+    final btnStyle = ButtonStyle(      
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+        shadowColor: MaterialStateProperty.all(Colors.transparent),
+        backgroundColor: MaterialStateProperty.all(Resources().primaryColor),
+        shape: MaterialStateProperty.all<CircleBorder>(CircleBorder()));
+    return Container(
+      child: ElevatedButton(        
+        style: btnStyle,
+        child: Icon(Icons.shopping_cart, color: Resources().fontColor), onPressed: (){},),
+    );
+  }
+
+  _addToCartBtn(Size size, BuildContext context, product) {
+    return Container(
+        alignment: Alignment.bottomCenter,
+        width: size.width * 0.4,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Resources().fontColor,
+            boxShadow: [
+              BoxShadow(
+                  color: Resources().whiteColor,
+                  blurRadius: 0.5,
+                  spreadRadius: 0.5,
+                  offset: Offset(0.3, 0.9))
+            ]),
+        child: InkWell(
+            borderRadius: BorderRadius.circular(20),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                  horizontal: size.width * 0.06, vertical: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(Icons.add_shopping_cart,color: Resources().primaryColor,),
+                  Text(
+                    'Agregar', 
+                    style: GoogleFonts.montserrat(color: Resources().primaryColor, fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  
+                ],
+              ),
+            )));
   }
 
   void _increaseAmount() {

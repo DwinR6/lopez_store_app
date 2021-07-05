@@ -17,6 +17,7 @@ class _BuildProductState extends State<BuildProduct> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
+      color: Resources().whiteColor,
       child: _product(widget.product, size),
     );
   }
@@ -27,34 +28,34 @@ class _BuildProductState extends State<BuildProduct> {
       child: FadeInImage(
         placeholder: AssetImage('assets/loading.gif'),
         image: AssetImage('assets/ims.png'),
-        height: size.height * 0.12,
-        width: size.width * 0.4,
-        fit: BoxFit.cover,
+        height: size.height * 0.15,
+        fit: BoxFit.fitHeight,
       ),
     );
 
     final productName = Container(
-      child: FittedBox(
+      child: Container(
         child: Text(
           item['product_name'],
-          style: GoogleFonts.montserrat(color: Resources().fontColor),
+          style: GoogleFonts.montserrat(color: Resources().secondaryColor, fontWeight: FontWeight.bold,),
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );
     final productPrice = Container(
       child: FittedBox(
         child: Text(
-          item['product_price'].toString(),
-          style: GoogleFonts.montserrat(color: Resources().fontColor),
+          '\$ ${item['product_price'].toString()}',
+          style: GoogleFonts.montserrat(color: Resources().secondaryColor),
         ),
       ),
     );
     return Container(
-        height: size.height * 0.24,
-        margin: EdgeInsets.symmetric(
-            horizontal: size.width * 0.025, vertical: size.height * 0.02),
+      width: size.width * 0.35,
+        height: size.height * 0.22,
+        margin: EdgeInsets.symmetric(horizontal: size.width * 0.025, vertical: size.height * 0.02),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(size.height * 0.017),
+            borderRadius: BorderRadius.circular(size.height * 0.010),
             color: Resources().whiteColor,
             boxShadow: [
               BoxShadow(
@@ -64,7 +65,7 @@ class _BuildProductState extends State<BuildProduct> {
                   offset: Offset(0.0, 0.5))
             ]),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(size.height * 0.017),
+          borderRadius: BorderRadius.circular(size.height * 0.010),
           child: InkWell(
               onTap: () {
                 setState(() {
@@ -81,10 +82,12 @@ class _BuildProductState extends State<BuildProduct> {
                   children: [
                     productImage,
                     SizedBox(
-                      height: size.height * 0.009,
+                      height: size.height * 0.005,
                     ),
-                    productName,
-                    productPrice,
+                    Container(
+                      child: Column(children: [productName, productPrice]),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                    )
                   ],
                 ),
               )),

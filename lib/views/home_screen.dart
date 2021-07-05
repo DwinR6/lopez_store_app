@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(body: _body(context, size));
+    return Scaffold(backgroundColor: Resources().whiteColor, body: _body(context, size));
   }
   /**Widget _crearAppBar(Size size, BuildContext context) {
     return SliverAppBar(
@@ -63,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //onTap: () => showSearch(context: context, delegate: BuscarMenus()),
       child: SafeArea(
           child: Container(
+            color: Colors.transparent,
         padding: EdgeInsets.symmetric(
             horizontal: size.width * 0.019, vertical: size.height * 0.0055),
         child: Align(
@@ -70,8 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: BounceInDown(
             child: Container(
               decoration: BoxDecoration(
-                  color: Resources().primaryColor.withOpacity(1),
-                  borderRadius: BorderRadius.circular(6),
+              color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(color: Resources().fontColor)
                   //boxShadow: [
                   //  BoxShadow(
                   //      color: Colors.black12,
@@ -107,13 +109,19 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [ 
           Container(
             decoration: BoxDecoration(
-              color: Resources().whiteColor,
-              //gradient: LinearGradient(
-              //  begin: Alignment.topCenter,
-              //  end: Alignment.bottomCenter,
-              //  colors: [Resources().primaryColor, Resources().primaryColor.withOpacity(0.5), Resources().primaryColor.withOpacity(0.//2)],
-              //  stops: [0.1, 0.5, 0.8]
-              //)
+              //color: Resources().primaryColor,
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Resources().primaryColor.withOpacity(0.5), 
+                  Resources().primaryColor.withOpacity(0.6), 
+                  Resources().primaryColor.withOpacity(0.7),
+                  Resources().primaryColor.withOpacity(0.9), 
+                  Resources().primaryColor.withOpacity(1),
+                ],
+                stops: [0.1, 0.2, 0.3,0.5, 0.9,]
+            )
             ),
             child: Column(
               children: [
@@ -122,7 +130,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          _content()
+          _content(),
+          
         ],
       ),
     );

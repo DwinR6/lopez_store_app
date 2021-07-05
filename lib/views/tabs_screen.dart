@@ -36,13 +36,13 @@ class _TabScreensState extends State<TabScreens> {
     return CurvedNavigationBar(
       color: Resources().primaryColor,
       animationDuration: Duration(seconds: 1),
-      backgroundColor: Resources().fontColor,
+      backgroundColor: Resources().whiteColor,
       animationCurve: Curves.easeInCubic,
       height: size.height * 0.065,
       items: [
-        Icon(Icons.home, color: Resources().fontColor, semanticLabel: 'Home',),
-        Icon(Icons.shopping_cart_sharp, color: Resources().fontColor, semanticLabel: 'Carrito',),
-        Icon(Icons.person, color: Resources().fontColor, semanticLabel: 'Perfil',)
+        Icon(Icons.home, color: Resources().secondaryColor, semanticLabel: 'Home',),
+        Icon(Icons.shopping_cart_sharp, color: Resources().secondaryColor, semanticLabel: 'Carrito',),
+        Icon(Icons.person, color: Resources().secondaryColor, semanticLabel: 'Perfil',)
       ],
       onTap: (index) {
           setState(() {
@@ -53,10 +53,10 @@ class _TabScreensState extends State<TabScreens> {
   }
   Widget _tabs(Size size) {
     return Theme(
-      data: Theme.of(context).copyWith(canvasColor: Resources().primaryColor),
+      data: Theme.of(context).copyWith(canvasColor: Resources().secondaryColor),
       child: BottomNavigationBar(
-        unselectedItemColor: Resources().fontColor.withOpacity(0.5),
-        selectedItemColor: Resources().fontColor,
+        unselectedItemColor: Resources().secondaryColor.withOpacity(0.5),
+        selectedItemColor: Resources().secondaryColor,
         currentIndex: _selectedScreenIndex,
         onTap: (index) {
           setState(() {
