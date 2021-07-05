@@ -1,4 +1,4 @@
-package com.example.lopez_store_app
+package com.lopez_express.lopez_store_app
 
 import io.flutter.embedding.android.FlutterActivity
 

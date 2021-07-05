@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "785393174067",
+    "project_id": "lopezexpress-storeonline",
+    "storage_bucket": "lopezexpress-storeonline.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785393174067:android:9b2e68333a9d576b738546",
+        "android_client_info": {
+          "package_name": "com.lopez_express.lopez_store_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785393174067-ei1ispdo3ad1s0b2vjt64o0rhim2gd56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjrhFVmbsYh-sjkg_U4NuLIpCFdnk-4eI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785393174067-ei1ispdo3ad1s0b2vjt64o0rhim2gd56.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
