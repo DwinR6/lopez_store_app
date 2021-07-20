@@ -3,27 +3,23 @@ import 'package:intl/intl.dart';
 import 'package:sweetalert/sweetalert.dart';
 
 class Resources {
-
 ////////////////Colors//////////////////////////
-///Color.fromRGBO(217, 4, 160, 1); //PINK COLOR #D904A0
-///Color.fromRGBO(104, 63, 191, 1); //VIOLETE #683FBF
-///Color.fromRGBO(242, 242, 242, 1); //WHITE #F2F2F2
-///Color.fromRGBO(242, 135, 5, 1); //ORANGE YELLOW #F28705
-///Color.fromRGBO(242, 114, 68, 1); //ORANGE PINK #F27244
-///Color.fromRGBO(7, 46, 64, 1); // BLUE GREEN #012E40
-///
-///
+  ///Color.fromRGBO(217, 4, 160, 1); //PINK COLOR #D904A0
+  ///Color.fromRGBO(104, 63, 191, 1); //VIOLETE #683FBF
+  ///Color.fromRGBO(242, 242, 242, 1); //WHITE #F2F2F2
+  ///Color.fromRGBO(242, 135, 5, 1); //ORANGE YELLOW #F28705
+  ///Color.fromRGBO(242, 114, 68, 1); //ORANGE PINK #F27244
+  ///Color.fromRGBO(7, 46, 64, 1); // BLUE GREEN #012E40
+  ///
+  ///
 
-
-  Color primaryColor =  Color.fromRGBO(242, 114, 68, 1);//Dark green blue dart
-  //Color primaryColor = Color.fromRGBO(104, 63, 191, 1); //Ligth violet
-  //Color secondaryColor = Color.fromRGBO(242, 114, 68, 1); orange dark
-  Color secondaryColor = Color.fromRGBO(7, 46, 64, 1); //  violet
+  Color primaryColor = Color.fromRGBO(1, 66, 106, 1);
+  Color accentColor = Color.fromRGBO(224, 62, 82, 1);
+  Color secondaryColor = Color.fromRGBO(255, 143, 28, 1);
   Color accentColorYellow = Color.fromRGBO(7, 46, 64, 1);
   Color accentColorPink = Color.fromRGBO(217, 4, 80, 1);
   Color whiteColor = Color.fromRGBO(242, 242, 242, 1);
-  Color fontColor = Color.fromRGBO(7, 46, 64, 1);
-
+  Color fontColor = Color.fromRGBO(255, 143, 28, 1);
 
   /////////////////////////////////A todo color pallete///////////////////////////////////////
   ///Color accentColor = Color.fromRBGO(217, 4, 160, 1); //pink color

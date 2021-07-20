@@ -36,10 +36,10 @@ class _ProductDetailState extends State<ProductDetail> {
       actions: [_showCartBtn(size, context)],
       title: Text(
         product["product_name"],
-        style: GoogleFonts.montserrat(
-            color: Resources().fontColor, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Resources().accentColor, fontWeight: FontWeight.bold),
       ),
-      iconTheme: IconThemeData(color: Resources().fontColor, opacity: 1.0),
+      iconTheme: IconThemeData(color: Resources().accentColor, opacity: 1.0),
       elevation: 2,
       expandedHeight: size.height * 0.40,
       floating: true,
@@ -124,14 +124,14 @@ class _ProductDetailState extends State<ProductDetail> {
           children: [
             Text(
               unitInStock.toString(),
-              style: GoogleFonts.montserrat(
-                  color: Resources().fontColor,
+              style: TextStyle(
+                  color: Resources().accentColor,
                   fontSize: 25,
                   fontWeight: FontWeight.bold),
             ),
             Text(
               'Disponibles',
-              style: GoogleFonts.montserrat(color: Resources().fontColor),
+              style: TextStyle(color: Resources().accentColor),
             )
           ],
         ));
@@ -145,14 +145,14 @@ class _ProductDetailState extends State<ProductDetail> {
           children: [
             Text(
               sold.toString(),
-              style: GoogleFonts.montserrat(
-                  color: Resources().fontColor,
+              style: TextStyle(
+                  color: Resources().accentColor,
                   fontSize: 25,
                   fontWeight: FontWeight.bold),
             ),
             Text(
               'Vendidos',
-              style: GoogleFonts.montserrat(color: Resources().fontColor),
+              style: TextStyle(color: Resources().accentColor),
             )
           ],
         ));
@@ -164,9 +164,9 @@ class _ProductDetailState extends State<ProductDetail> {
       padding: EdgeInsets.symmetric(
           vertical: size.height * 0.03, horizontal: size.width * 0.03),
       child: Text(productName,
-          style: GoogleFonts.montserrat(
+          style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Resources().fontColor,
+              color: Resources().accentColor,
               fontSize: 25)),
     );
   }
@@ -178,18 +178,18 @@ class _ProductDetailState extends State<ProductDetail> {
           Container(
             padding: EdgeInsets.all(15),
             child: Text("Acerca del producto",
-                style: GoogleFonts.montserrat(
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Resources().fontColor)),
+                    color: Resources().accentColor)),
             alignment: Alignment.centerLeft,
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: size.height * 0.025),
             child: Text(productDescription,
-                style: GoogleFonts.montserrat(
+                style: TextStyle(
                     fontWeight: FontWeight.normal,
-                    color: Resources().fontColor,
+                    color: Resources().accentColor,
                     fontSize: 18,
                     height: 2)),
           ),
@@ -205,12 +205,12 @@ class _ProductDetailState extends State<ProductDetail> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text('\$ $productPrice',
-                style: GoogleFonts.montserrat(
-                    color: Resources().fontColor,
+                style: TextStyle(
+                    color: Resources().accentColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 25)),
             Text('Precio',
-                style: GoogleFonts.montserrat(color: Resources().fontColor))
+                style: TextStyle(color: Resources().accentColor))
           ],
         ));
   }
@@ -235,7 +235,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 boxShadow: [
                   BoxShadow(
                       blurRadius: 0.2,
-                      color: Resources().fontColor,
+                      color: Resources().accentColor,
                       offset: Offset(0, 0.6),
                       spreadRadius: 0.7)
                 ],
@@ -248,21 +248,21 @@ class _ProductDetailState extends State<ProductDetail> {
                   style: btnStyle,
                   child: Icon(
                     Icons.remove,
-                    color: Resources().fontColor,
+                    color: Resources().accentColor,
                   ),
                   onPressed: _diminishAmount,
                 ),
                 Container(
                   child: Text('${this._amount}',
-                      style: GoogleFonts.montserrat(
+                      style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Resources().fontColor)),
+                          color: Resources().accentColor)),
                   decoration: BoxDecoration(),
                 ),
                 ElevatedButton(
                   style: btnStyle,
-                  child: Icon(Icons.add, color: Resources().fontColor),
+                  child: Icon(Icons.add, color: Resources().accentColor),
                   onPressed: _increaseAmount,
                 ),
               ],
@@ -272,10 +272,10 @@ class _ProductDetailState extends State<ProductDetail> {
             alignment: Alignment.centerRight,
             child: Text(
               '\$ ${this._amount * productPrice}',
-              style: GoogleFonts.montserrat(
+              style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Resources().fontColor),
+                  color: Resources().accentColor),
             ),
           )
         ],
@@ -309,7 +309,7 @@ class _ProductDetailState extends State<ProductDetail> {
     return Container(
       child: ElevatedButton(        
         style: btnStyle,
-        child: Icon(Icons.shopping_cart, color: Resources().fontColor), onPressed: (){},),
+        child: Icon(Icons.shopping_cart, color: Resources().accentColor), onPressed: (){},),
     );
   }
 
@@ -319,7 +319,7 @@ class _ProductDetailState extends State<ProductDetail> {
         width: size.width * 0.4,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: Resources().fontColor,
+            color: Resources().primaryColor,
             boxShadow: [
               BoxShadow(
                   color: Resources().whiteColor,
@@ -330,15 +330,16 @@ class _ProductDetailState extends State<ProductDetail> {
         child: InkWell(
             borderRadius: BorderRadius.circular(20),
             child: Container(
+              alignment: Alignment.center,
               padding: EdgeInsets.symmetric(
                   horizontal: size.width * 0.06, vertical: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(Icons.add_shopping_cart,color: Resources().primaryColor,),
+                  Icon(Icons.add_shopping_cart,color: Resources().accentColor,),
                   Text(
                     'Agregar', 
-                    style: GoogleFonts.montserrat(color: Resources().primaryColor, fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(color: Resources().accentColor, fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   
                 ],

@@ -36,10 +36,10 @@ class _AllCategoriesProductsState extends State<AllCategoriesProducts> {
                 padding: EdgeInsets.all(10),
                 child: Text(
                   'Lo mas nuevo',
-                  style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.bold,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
                       fontSize: 25,
-                      color: Resources().secondaryColor),
+                      color: Resources().primaryColor),
                   textAlign: TextAlign.left,
                 ),
                 alignment: Alignment.centerLeft,
@@ -51,10 +51,10 @@ class _AllCategoriesProductsState extends State<AllCategoriesProducts> {
               Container(
                 padding: EdgeInsets.all(10),
                 child: Text('Top Ventas',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.bold,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w800,
                         fontSize: 25,
-                        color: Resources().secondaryColor),
+                        color: Resources().primaryColor),
                     textAlign: TextAlign.left),
                 alignment: Alignment.centerLeft,
               ),
@@ -65,10 +65,10 @@ class _AllCategoriesProductsState extends State<AllCategoriesProducts> {
               Container(
                 padding: EdgeInsets.all(10),
                 child: Text('Lo mas buscado',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.bold,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w800,
                         fontSize: 25,
-                        color: Resources().secondaryColor),
+                        color: Resources().primaryColor),
                     textAlign: TextAlign.left),
                 alignment: Alignment.centerLeft,
               ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lopez_store_app/controllers/category_controller.dart';
 import 'package:lopez_store_app/controllers/product_controller.dart';
 import 'package:lopez_store_app/resources/resources.dart';
+import 'package:lopez_store_app/views/business_logup_screen.dart';
 import 'package:lopez_store_app/views/car_screen.dart';
 import 'package:lopez_store_app/views/home_screen.dart';
 import 'package:lopez_store_app/views/login_screen.dart';
-import 'package:lopez_store_app/views/product_detail_view.dart';
 import 'package:lopez_store_app/views/profile_screen.dart';
 import 'package:lopez_store_app/views/tabs_screen.dart';
 import 'package:provider/provider.dart';
@@ -26,10 +26,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Lopez Store', 
-        theme: ThemeData(primaryColor: Resources().primaryColor,),
+        theme: ThemeData(primaryColor: Resources().primaryColor, fontFamily: 'Mont'),
         initialRoute: 'login',
         routes: {
           'login': (context) => LoginScreen(),
+          'register_business': (context) => BusinessLogup(),
           'main': (context) => TabScreens(),
           'home': (context) => HomeScreen(),
           'profile': (context) => ProfileScreen(),

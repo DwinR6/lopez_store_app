@@ -45,6 +45,33 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Mont
+      fonts: 
+        - asset: assets/fonts/mont/ttf/Mont-Black.ttf
+        - asset: assets/fonts/mont/ttf/Mont-BlackItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Bold.ttf
+        - asset: assets/fonts/mont/ttf/Mont-BoldItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Book.ttf
+        - asset: assets/fonts/mont/ttf/Mont-BookItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-ExtraLight.ttf
+        - asset: assets/fonts/mont/ttf/Mont-ExtraLightItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Hairline.ttf
+        - asset: assets/fonts/mont/ttf/Mont-HairlineItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Heavy.ttf
+        - asset: assets/fonts/mont/ttf/Mont-HeavyItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Light.ttf
+        - asset: assets/fonts/mont/ttf/Mont-LightItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Regular.ttf
+        - asset: assets/fonts/mont/ttf/Mont-RegularItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-SemiBold.ttf
+        - asset: assets/fonts/mont/ttf/Mont-SemiBoldItalic.ttf
+        - asset: assets/fonts/mont/ttf/Mont-Thin.ttf
+        - asset: assets/fonts/mont/ttf/Mont-ThinItalic.ttf
+
+
+
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

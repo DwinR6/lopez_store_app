@@ -9,6 +9,7 @@ import 'package:lopez_store_app/controllers/product_controller.dart';
 import 'package:lopez_store_app/models/category_model.dart';
 import 'package:lopez_store_app/resources/resources.dart';
 import 'package:lopez_store_app/views/all_products_screen.dart';
+import 'package:lopez_store_app/views/categories_screen.dart';
 import 'package:lopez_store_app/views/subcategories_view.dart';
 import 'package:lopez_store_app/views/secon_content.dart';
 
@@ -25,17 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   dynamic category;
   List<Widget> screenOptions = [
     AllCategoriesProducts(),
-    SecondContent(),
-    AllCategoriesProducts(),
-    SecondContent(),
-    AllCategoriesProducts(),
-    SecondContent()
+    CategoriesScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(backgroundColor: Resources().whiteColor, body: _body(context, size));
+    return Scaffold(
+        backgroundColor: Resources().whiteColor, body: _body(context, size));
   }
   /**Widget _crearAppBar(Size size, BuildContext context) {
     return SliverAppBar(
@@ -63,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //onTap: () => showSearch(context: context, delegate: BuscarMenus()),
       child: SafeArea(
           child: Container(
-            color: Colors.transparent,
+        color: Colors.transparent,
         padding: EdgeInsets.symmetric(
             horizontal: size.width * 0.019, vertical: size.height * 0.0055),
         child: Align(
@@ -71,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: BounceInDown(
             child: Container(
               decoration: BoxDecoration(
-              color: Colors.transparent,
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(25),
                   border: Border.all(color: Resources().fontColor)
                   //boxShadow: [
@@ -80,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   //      blurRadius: 5,
                   //      offset: Offset(0, 5))
                   //]
-              ),
+                  ),
               height: size.height * 0.05,
               width: double.infinity,
               child: _inputSearchBar(size, context),
@@ -98,7 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
         Icon(Icons.search, color: Resources().fontColor.withOpacity(0.7)),
         SizedBox(width: size.width * 0.05),
         Text('Buscar Productos',
-            style: GoogleFonts.baloo(color: Resources().fontColor))
+            style: GoogleFonts.nunito(
+              color: Resources().fontColor,
+            ))
       ],
     );
   }
@@ -106,32 +106,28 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _body(BuildContext context, Size size) {
     return Container(
       child: Column(
-        children: [ 
+        children: [
           Container(
             decoration: BoxDecoration(
-              //color: Resources().primaryColor,
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Resources().primaryColor.withOpacity(0.5), 
-                  Resources().primaryColor.withOpacity(0.6), 
-                  Resources().primaryColor.withOpacity(0.7),
-                  Resources().primaryColor.withOpacity(0.9), 
-                  Resources().primaryColor.withOpacity(1),
-                ],
-                stops: [0.1, 0.2, 0.3,0.5, 0.9,]
-            )
+              color: Resources().primaryColor,
+              //gradient: LinearGradient(
+              //  begin: Alignment.topCenter,
+              //  end: Alignment.bottomCenter,
+              //  colors: [
+              //    Resources().primaryColor.withOpacity(0.5),
+              //    Resources().primaryColor.withOpacity(0.6),
+              //    Resources().primaryColor.withOpacity(0.7),
+              //    Resources().primaryColor.withOpacity(0.9),
+              //    Resources().primaryColor.withOpacity(1),
+              //  ],
+              //  stops: [0.1, 0.2, 0.3,0.5, 0.9,]
+              //)
             ),
             child: Column(
-              children: [
-                _searchBar(size, context), 
-                _optionPanel(size)
-              ],
+              children: [_searchBar(size, context), _optionPanel(size)],
             ),
           ),
           _content(),
-          
         ],
       ),
     );
@@ -142,21 +138,20 @@ class _HomeScreenState extends State<HomeScreen> {
       stream: _categoryController.categoryStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CupertinoActivityIndicator(radius: 25));
+          return Center();
         } else {
           List<Category> categories = <Category>[];
-          categories.add(new Category(
-              categoryName: "Todos los Productos",
-              categoryImages: [
-                'https://outfitsandoutings.com/wp-content/uploads/2019/04/best-baby-products-on-amazon2.png'
-              ]));
+          categories
+              .add(new Category(categoryName: "Productos", categoryImages: [
+            'https://outfitsandoutings.com/wp-content/uploads/2019/04/best-baby-products-on-amazon2.png'
+          ]));
+          categories.add(new Category(categoryName: 'Categorias'));
           categories = categories + snapshot.data;
           return Container(
             alignment: Alignment.centerLeft,
             decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-                        color: Resources().fontColor, width: 0.5))),
+              border: Border(bottom:BorderSide(color: Resources().fontColor, width: 0.5))
+              ),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
@@ -182,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   bottom: BorderSide(
                                       width: 3,
                                       color: activeOption == index
-                                          ? Resources().fontColor
+                                          ? Resources().accentColor
                                           : Colors.transparent)),
                             ),
                             child: Row(
@@ -192,20 +187,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 0.8, horizontal: 2),
                                   child: Text(categories[index].categoryName,
-                                      style: GoogleFonts.montserrat(
-                                          fontSize: 15,
-                                          color: activeOption == index
-                                              ? Resources().fontColor
-                                              : Resources().fontColor.withOpacity(0.5))),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: activeOption == index ? FontWeight.w800 : FontWeight.w500,
+                                        color: activeOption == index
+                                          ? Resources().accentColor
+                                          : Resources().accentColor.withOpacity(0.9)
+                                      )
+                                  ),
                                 ),
-                                Container(
-                                  height: size.height * 0.02 ,
-                                  width: size.width * 0.03,
-                                  child: Image(
-                                      image: NetworkImage(
-                                          categories[index].categoryImages[0]),
-                                      fit: BoxFit.cover),
-                                )
+                                //Container(
+                                //  height: size.height * 0.02 ,
+                                //  width: size.width * 0.03,
+                                //  child: Image(
+                                //      image: NetworkImage(
+                                //          categories[index].categoryImages[0]),
+                                //      fit: BoxFit.cover),
+                                //)
                               ],
                             ))),
                   );
@@ -221,8 +219,11 @@ class _HomeScreenState extends State<HomeScreen> {
   _content() {
     return Flexible(
       child: Container(
-        decoration: BoxDecoration(color: Resources().whiteColor.withOpacity(1)),
-        child: activeOption == 0 ? screenOptions.elementAt(activeOption): SubCategories(selectedCategory: category,)
+          decoration:
+              BoxDecoration(color: Resources().whiteColor.withOpacity(1)),
+          child: (activeOption == 0 || activeOption == 1)
+              ? screenOptions.elementAt(activeOption)
+              : SubCategories(selectedCategory: category, back: false,)
       ),
     );
   }

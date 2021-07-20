@@ -44,9 +44,9 @@ class _ProductsViewState extends State<ProductsView> {
         Container(
           padding: EdgeInsets.all(10),
           child: Text(subcat["subcategory_name"],
-              style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.bold, fontSize: 25),
-              textAlign: TextAlign.left),
+              style: TextStyle(color: Resources().primaryColor, fontWeight: FontWeight.w800, fontSize: 25),
+              textAlign: TextAlign.left
+          ),
           alignment: Alignment.centerLeft,
         ),
         _buildProducts(size, subcat),

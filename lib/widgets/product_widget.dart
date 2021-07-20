@@ -37,7 +37,7 @@ class _BuildProductState extends State<BuildProduct> {
       child: Container(
         child: Text(
           item['product_name'],
-          style: GoogleFonts.montserrat(color: Resources().secondaryColor, fontWeight: FontWeight.bold,),
+          style: GoogleFonts.montserrat(color: Resources().accentColor, fontWeight: FontWeight.bold,),
           overflow: TextOverflow.ellipsis,
         ),
       ),
@@ -46,24 +46,26 @@ class _BuildProductState extends State<BuildProduct> {
       child: FittedBox(
         child: Text(
           '\$ ${item['product_price'].toString()}',
-          style: GoogleFonts.montserrat(color: Resources().secondaryColor),
+          style: GoogleFonts.montserrat(color: Resources().accentColor),
         ),
       ),
     );
     return Container(
       width: size.width * 0.35,
         height: size.height * 0.22,
-        margin: EdgeInsets.symmetric(horizontal: size.width * 0.025, vertical: size.height * 0.02),
+        margin: EdgeInsets.symmetric(horizontal: size.width * 0.01, vertical: size.height * 0.03),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(size.height * 0.010),
             color: Resources().whiteColor,
+            //border: Border.all(color: Resources().primaryColor)
             boxShadow: [
               BoxShadow(
                   color: Resources().primaryColor,
                   blurRadius: 0.2,
                   spreadRadius: 0.5,
                   offset: Offset(0.0, 0.5))
-            ]),
+            ]
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(size.height * 0.010),
           child: InkWell(

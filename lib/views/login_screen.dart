@@ -29,37 +29,50 @@ class _LoginScreenState extends State<LoginScreen> {
           end: Alignment.bottomCenter,
           colors: [
             Resources().primaryColor,
+            Resources().primaryColor.withOpacity(0.9),
             Resources().primaryColor.withOpacity(0.7),
-            Resources().primaryColor.withOpacity(0.4),
-            Resources().primaryColor.withOpacity(0.1),
-            Resources().primaryColor.withOpacity(0.05),
+            Resources().primaryColor.withOpacity(0.5),
+            Resources().primaryColor.withOpacity(0.3),
           ],
-          stops: [0.1, 0.4, 0.7, 0.9, 0.95],
+          stops: [0.1, 0.4, 0.7, 0.9, 1],
         )
       ),
-      padding: EdgeInsets.only(top: size.height * 0.05, bottom: size.height * 0.07),
+      padding: EdgeInsets.only(top: size.height * 0.0, bottom: size.height * 0.02),
       child: SingleChildScrollView(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
+        child: Container(
+          margin: EdgeInsets.only(bottom: size.height * 0.07, top: size.height * 0.07),
+          
                 child: Column(
               children: [
-                SizedBox(height: size.height * 0.05),
                 _title(),
+                SizedBox(height: size.height * 0.02),
+                _lopezIcon(size),                
                 SizedBox(height: size.height * 0.05),
-                _lopezIcon(size),
-                SizedBox(height: size.height * 0.05),
-                _inputs(),
+                Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Resources().fontColor.withOpacity(0.0), borderRadius: BorderRadius.all(Radius.circular(10)) ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Iniciar Sesion', 
+                        style: TextStyle(color: Resources().secondaryColor, fontWeight: FontWeight.w300, fontSize: 22),
+                      ),
+                  SizedBox(height: size.height * 0.02),
+                  _inputs(),],
+                  ),
+                ),
+                
                 SizedBox(height: size.height * 0.05),
                 _loginButton(size),
                 SizedBox(height: size.height * 0.05),
                 _logupButton(),
-                SizedBox(height: size.height * 0.05),
+                SizedBox(height: size.height * 0.02),
                 _socialLoginButtons(),
               ],
-            ))
-          ],
+            )
+          ,
         ),
       ),
     );
@@ -68,7 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _title() {
     return Text(
       'Lopez Store',
-      style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 29, color: Resources().secondaryColor.withOpacity(0.9)),
+      style: TextStyle(fontSize: 30,  fontWeight: FontWeight.bold, color: Resources().fontColor)
+      //GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 29, color: Resources().secondaryColor.withOpacity(0.9)),
     );
   }
 
@@ -112,21 +126,32 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _loginButton(Size size) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: MaterialButton(
-        padding: EdgeInsets.symmetric(
-            vertical: size.height * 0.025, horizontal: size.width * 0.2),
-        onPressed: !_loading
-            ? () async {
-                _login();
-              }
-            : null,
-        child:
-            Text('Iniciar Sesion', style: GoogleFonts.montserrat(fontSize: 18, color: Resources().primaryColor, fontWeight: FontWeight.bold)),
-        color: Resources().secondaryColor,
-        textColor: Colors.white,
-        splashColor: Resources().primaryColor,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(40)),
+        boxShadow: [BoxShadow(
+          color: Resources().secondaryColor,
+          blurRadius: 0.7,
+          offset: Offset(0.7 , 0.9),
+          spreadRadius: 0.00000000
+        )]
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(40),
+        child: MaterialButton(
+          padding: EdgeInsets.symmetric(
+              vertical: size.height * 0.020, horizontal: size.width * 0.2),
+          onPressed: !_loading
+              ? () async {
+                  _login();
+                }
+              : null,
+          child:
+              Text('Iniciar Sesion', style:TextStyle(color: Resources().secondaryColor, fontSize: 17, fontWeight: FontWeight.w700)),
+          color: Resources().primaryColor,
+          textColor: Colors.white,
+          splashColor: Resources().secondaryColor,
+        ),
       ),
     );
   }

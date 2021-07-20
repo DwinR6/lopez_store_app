@@ -30,38 +30,47 @@ class Input extends StatelessWidget {
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.symmetric(
           vertical: size.height * 0.01, horizontal: size.width * 0.05),
-      decoration: BoxDecoration(
-          color: Resources().whiteColor.withOpacity(1),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: Resources().secondaryColor.withOpacity(0.5),
-                offset: Offset(2, 3))
-          ]),
+      //  decoration: BoxDecoration(
+      //      color: Colors.transparent,
+      //      borderRadius: BorderRadius.circular(30),
+      //      border: Border.all(color: Resources().fontColor)
+      //      //boxShadow: [
+      //      //  BoxShadow(
+      //      //      color: Resources().secondaryColor.withOpacity(0.5),
+      //      //      offset: Offset(2, 3))
+      //      //]
+      //      ),
       child: _textFormField(),
     );
   }
 
   Widget _textFormField() {
-    final textStyle = GoogleFonts.montserrat(color: Resources().secondaryColor);
+    final textStyle = TextStyle(color: Resources().secondaryColor, fontWeight: FontWeight.w300);
     final textDecoration = InputDecoration(
-          prefixIcon: Icon(this.icon, color: Resources().secondaryColor,),
-          focusedBorder: InputBorder.none,
-          border: InputBorder.none,
-          hintText: this.placeholder,
-          hintStyle: GoogleFonts.montserrat(color: Resources().secondaryColor),
+      prefixIcon: Icon(
+        this.icon,
+        color: Resources().fontColor,
+      ),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(40)),
+          borderSide: BorderSide(color: Resources().secondaryColor)),
+      hintText: this.placeholder,
+      hintStyle: textStyle,
     );
 
-    return TextFormField(
-      autocorrect: false,
-      textCapitalization: this.textCapitalization,
-      keyboardType: this.keyboardType,
-      obscureText: this.isPassword,
-      controller: this.textController,
-      readOnly: this.readOnly,
-      onTap: this.onTap,
-      style: textStyle,
-      decoration:  textDecoration
-    );
+    return Theme(
+        data: ThemeData(
+            primaryColor: Resources().primaryColor,
+            accentColor: Resources().secondaryColor),
+        child: TextFormField(
+            autocorrect: false,
+            textCapitalization: this.textCapitalization,
+            keyboardType: this.keyboardType,
+            obscureText: this.isPassword,
+            controller: this.textController,
+            readOnly: this.readOnly,
+            onTap: this.onTap,
+            style: textStyle,
+            decoration: textDecoration));
   }
 }
