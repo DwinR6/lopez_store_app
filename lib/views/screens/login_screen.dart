@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(brightness: Brightness.dark,),
       body: _body(size),
     );
   }
@@ -132,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
         boxShadow: [BoxShadow(
           color: Resources().secondaryColor,
           blurRadius: 0.7,
-          offset: Offset(0.7 , 0.9),
+          offset: Offset(0.7, 0.9),
           spreadRadius: 0.00000000
         )]
       ),

@@ -8,8 +8,8 @@ import 'package:lopez_store_app/controllers/category_controller.dart';
 import 'package:lopez_store_app/controllers/product_controller.dart';
 import 'package:lopez_store_app/models/category_model.dart';
 import 'package:lopez_store_app/resources/resources.dart';
-import 'package:lopez_store_app/views/all_products_screen.dart';
-import 'package:lopez_store_app/views/categories_screen.dart';
+import 'package:lopez_store_app/views/screens/all_products_screen.dart';
+import 'package:lopez_store_app/views/screens/categories_screen.dart';
 import 'package:lopez_store_app/views/subcategories_view.dart';
 import 'package:lopez_store_app/views/secon_content.dart';
 
@@ -33,7 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Resources().whiteColor, body: _body(context, size));
+
+      appBar: AppBar(brightness: Brightness.dark,toolbarHeight: 0,),
+        backgroundColor: Resources().whiteColor, 
+        body: _body(context, size)
+    );
   }
   /**Widget _crearAppBar(Size size, BuildContext context) {
     return SliverAppBar(

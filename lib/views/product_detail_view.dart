@@ -1,8 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:lopez_store_app/controllers/order_controller.dart';
 import 'package:lopez_store_app/resources/resources.dart';
+import 'package:lopez_store_app/services/user_service.dart';
 import 'package:lopez_store_app/utilities/Clipping.dart';
+import 'package:lopez_store_app/views/screens/car_screen.dart';
 
 class ProductDetail extends StatefulWidget {
   final dynamic product;
@@ -209,8 +211,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     color: Resources().accentColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 25)),
-            Text('Precio',
-                style: TextStyle(color: Resources().accentColor))
+            Text('Precio', style: TextStyle(color: Resources().accentColor))
           ],
         ));
   }
@@ -301,15 +302,17 @@ class _ProductDetailState extends State<ProductDetail> {
   }
 
   _showCartBtn(Size size, BuildContext context) {
-    final btnStyle = ButtonStyle(      
+    final btnStyle = ButtonStyle(
         padding: MaterialStateProperty.all(EdgeInsets.zero),
         shadowColor: MaterialStateProperty.all(Colors.transparent),
         backgroundColor: MaterialStateProperty.all(Resources().primaryColor),
         shape: MaterialStateProperty.all<CircleBorder>(CircleBorder()));
     return Container(
-      child: ElevatedButton(        
+      child: ElevatedButton(
         style: btnStyle,
-        child: Icon(Icons.shopping_cart, color: Resources().accentColor), onPressed: (){},),
+        child: Icon(Icons.shopping_cart, color: Resources().accentColor),
+        onPressed: () {},
+      ),
     );
   }
 
@@ -328,6 +331,9 @@ class _ProductDetailState extends State<ProductDetail> {
                   offset: Offset(0.3, 0.9))
             ]),
         child: InkWell(
+            onTap: () {
+              addProductToCart(context, product);
+            },
             borderRadius: BorderRadius.circular(20),
             child: Container(
               alignment: Alignment.center,
@@ -336,12 +342,17 @@ class _ProductDetailState extends State<ProductDetail> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(Icons.add_shopping_cart,color: Resources().accentColor,),
-                  Text(
-                    'Agregar', 
-                    style: TextStyle(color: Resources().accentColor, fontWeight: FontWeight.bold, fontSize: 16),
+                  Icon(
+                    Icons.add_shopping_cart,
+                    color: Resources().accentColor,
                   ),
-                  
+                  Text(
+                    'Agregar',
+                    style: TextStyle(
+                        color: Resources().accentColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
                 ],
               ),
             )));
@@ -357,5 +368,19 @@ class _ProductDetailState extends State<ProductDetail> {
       this._amount--;
     }
     setState(() {});
+  }
+
+  void addProductToCart(BuildContext context, dynamic product) async {
+    PedidoController.user.myCartProducts.add({
+      "product": product,
+      "cantidad": this._amount,
+      "subtotal": (this._amount * product["product_price"]),
+    });
+    
+    Resources().showMessageSuccess(context, 'Agregado a la Orden!', () {
+      Navigator.of(context).pop();
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CarScreen()));
+    });
   }
 }
